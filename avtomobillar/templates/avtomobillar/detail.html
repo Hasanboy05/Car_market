@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ avtomobil.marka }} {{ avtomobil.model }} | AVTOBOZOR</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #101c35;
+            color: white;
+            padding: 25px 8%;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #45a5ff;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #101c35, #234b80);
+            color: white;
+            padding: 45px 8%;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 900px;
+            margin: 45px auto;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(20, 40, 80, 0.08);
+        }
+
+        .car-image {
+            background: linear-gradient(135deg, #dcecff, #a9c9ee);
+            height: 230px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            margin-bottom: 30px;
+        }
+
+        .detail-card h2 {
+            font-size: 28px;
+            color: #172b4d;
+            margin-bottom: 25px;
+        }
+
+        .info {
+            padding: 16px;
+            background: #f4f7fb;
+            border-radius: 9px;
+            margin-bottom: 13px;
+            color: #52627a;
+            font-size: 16px;
+        }
+
+        .price {
+            color: #1769c2;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: #1769c2;
+            color: white;
+            text-decoration: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #104b91;
+        }
+
+        footer {
+            background: #101c35;
+            color: #bdc9dc;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            .detail-card {
+                padding: 20px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">AVTO<span>BOZOR</span></div>
+</header>
+
+<section class="hero">
+    <h1>Avtomobil haqida batafsil ma'lumot</h1>
+    <p>Tanlangan avtomobilning barcha ma'lumotlari</p>
+</section>
+
+<div class="container">
+
+    <div class="detail-card">
+
+        <div class="car-image">🚘</div>
+
+        <h2>{{ avtomobil.marka }} {{ avtomobil.model }}</h2>
+
+        <div class="info">
+            <strong>Markasi:</strong> {{ avtomobil.marka }}
+        </div>
+
+        <div class="info">
+            <strong>Modeli:</strong> {{ avtomobil.model }}
+        </div>
+
+        <div class="info">
+            <strong>Ishlab chiqarilgan yili:</strong> {{ avtomobil.yil }}
+        </div>
+
+        <div class="price">
+            {{ avtomobil.narx }} so'm
+        </div>
+
+        <a href="{% url 'avtomobillar_royxati' %}" class="back-btn">
+            ← Orqaga qaytish
+        </a>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 AVTOBOZOR — Barcha huquqlar himoyalangan.
+</footer>
+
+</body>
+</html>

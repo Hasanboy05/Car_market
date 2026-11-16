@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvtoBozor | Avtomobillar</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #101c35;
+            color: white;
+            padding: 25px 8%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #45a5ff;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #101c35, #234b80);
+            color: white;
+            padding: 65px 8%;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #d3e2f5;
+            font-size: 17px;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1200px;
+            margin: 45px auto;
+        }
+
+        .section-title {
+            font-size: 27px;
+            margin-bottom: 25px;
+        }
+
+        .cars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(20, 40, 80, 0.08);
+            transition: 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(20, 40, 80, 0.15);
+        }
+
+        .car-image {
+            height: 170px;
+            background: linear-gradient(135deg, #dcecff, #a9c9ee);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+        }
+
+        .car-info {
+            padding: 22px;
+        }
+
+        .car-info h3 {
+            font-size: 21px;
+            margin-bottom: 16px;
+            color: #172b4d;
+        }
+
+        .car-info p {
+            color: #65738a;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .price {
+            color: #1263c5 !important;
+            font-size: 20px !important;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .detail-btn {
+            display: block;
+            text-align: center;
+            background: #1769c2;
+            color: white;
+            text-decoration: none;
+            padding: 13px;
+            border-radius: 8px;
+            margin-top: 18px;
+            transition: 0.3s;
+        }
+
+        .detail-btn:hover {
+            background: #104b91;
+        }
+
+        .empty {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            color: #65738a;
+        }
+
+        footer {
+            background: #101c35;
+            color: #bdc9dc;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">AVTO<span>BOZOR</span></div>
+        <div>Avtomobillar bozori</div>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>O'zingizga mos avtomobilni toping!</h1>
+    <p>Eng yaxshi avtomobillar va qulay narxlar bir joyda.</p>
+</section>
+
+<div class="container">
+
+    <h2 class="section-title">Barcha avtomobillar</h2>
+
+    <div class="cars">
+
+        {% for avtomobil in avtomobillar %}
+
+        <div class="car-card">
+
+            <div class="car-image">
+                🚘
+            </div>
+
+            <div class="car-info">
+
+                <h3>{{ avtomobil.marka }} {{ avtomobil.model }}</h3>
+
+                <p>📅 Ishlab chiqarilgan yili: {{ avtomobil.yil }}</p>
+
+                <p class="price">
+                    {{ avtomobil.narx }} so'm
+                </p>
+
+                <a href="{% url 'avtomobil_detail' avtomobil.id %}"
+                   class="detail-btn">
+                    Batafsil ma'lumot →
+                </a>
+
+            </div>
+        </div>
+
+        {% empty %}
+
+        <div class="empty">
+            Hozircha avtomobillar mavjud emas.
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+<footer>
+    © 2026 AVTOBOZOR — Barcha huquqlar himoyalangan.
+</footer>
+
+</body>
+</html>
